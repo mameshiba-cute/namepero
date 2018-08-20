@@ -28,12 +28,17 @@ print new_post[1]
 print ("------------------------------------------------------------")
 """
 
-hoge = bs4(new_post[0], "html.parser").find_all("p")[0].text.encode('utf-8')
+# 最新投稿の投稿時間を入手()
+latestpost_time = datetime.strptime(bs4(new_post[0], "html.parser").find_all("p")[0].text.encode('utf-8'), '%Y/%m/%d %H:%M:%S')
+now_time        = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-tdatetime = datetime.strptime(hoge, '%Y/%m/%d %H:%M:%S')
-print ('直近の投稿時刻: ' + str(tdatetime))
-print ('現在の時刻   : ' + str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+print latestpost_time
 
+"""
+print ('直近の投稿時刻: ' + str(hoge_datetime))
+print ('現在の時刻   : ' + str(fuga_datetime))
+print ('時刻差分     : ' + str(fuga_datetime - hoge_datetime))
+"""
 
 
 """
